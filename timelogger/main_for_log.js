@@ -26,10 +26,18 @@ addMessage=(function(json) {
 })
 
 $(document).ready( function() {
+    const messElement = document.querySelector("#message");
+    while (messElement.firstChild) {
+      messElement.removeChild(messElement.firstChild);
+    }
+
     bodyText=$("body").text();
     regexpMessage=/(?<=(var message = ))\[{".*"}\]/;
     messageText=bodyText.match(regexpMessage)[0];
     message=JSON.parse(messageText);
-    console.log(message);
     addMessage(message);
 });
+
+function isNgWatcher() {
+    return Number($.cookie('NG_WATCHER'))==1;
+}
