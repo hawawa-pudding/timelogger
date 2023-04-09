@@ -1,12 +1,11 @@
 g_last_id=0;
 addMessage=(function(json, isNew=true) {
     var update_players = false;
+    const messElement = document.querySelector("#message");
+    while (messElement.firstChild) {
+        messElement.removeChild(messElement.firstChild);
+    }
     for (var i in json) {
-        const messElement = document.querySelector("#message");
-        while (messElement.firstChild) {
-            messElement.removeChild(element.firstChild);
-        }
-
         var v = json[i];
         if (!v) {
             continue;
