@@ -24,3 +24,12 @@ addMessage=(function(json) {
         $('#message').append(text);
     }
 })
+
+$(document).ready( function() {
+    bodyText=$("body").text();
+    regexpMessage=/(?<=(var message = ))\[{".*"}\]/;
+    messageText=bodyText.match(regexpMessage)[0];
+    message=JSON.parse(messageText);
+    console.log(message);
+    addMessage(message);
+});

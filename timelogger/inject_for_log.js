@@ -11,6 +11,10 @@ injectScript = function(file, node) {
 
 
 window.addEventListener('DOMContentLoaded', ()=>{
-    injectScript(chrome.runtime.getURL('main_for_player.js'), 'body');
-    console.log("Done");
+  const messElement = document.querySelector("#message");
+  while (messElement.firstChild) {
+    messElement.removeChild(messElement.firstChild);
+  }
+
+    injectScript(chrome.runtime.getURL('main_for_log.js'), 'body');
 });
